@@ -7,6 +7,11 @@ public class Brick : MonoBehaviour
 
     [SerializeField] BrickModel myBrickModel;
     SpriteRenderer brickSpriteRenderer;
+
+    public BrickModel MyBrickModel
+	{
+		get { return myBrickModel; }
+	}
     void Start()
     {
         brickSpriteRenderer = GetComponent<SpriteRenderer>();
