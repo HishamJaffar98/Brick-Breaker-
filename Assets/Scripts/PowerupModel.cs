@@ -6,7 +6,7 @@ using UnityEngine;
 public class PowerupModel : ScriptableObject
 {
     [SerializeField] Color[] powerupColors;
-    public enum PowerupType { ReverseControl, EnlargePaddle, StrongBall};
+    public enum PowerupType { ReverseControl, EnlargePaddle};
     public Color[] PowerupColors
 	{
 		get

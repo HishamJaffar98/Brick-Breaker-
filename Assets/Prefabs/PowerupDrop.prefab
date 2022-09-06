@@ -140,4 +140,3 @@ MonoBehaviour:
   powerupEvents:
   - {fileID: 11400000, guid: 8c76923bb0f6f3443815578d13b9be59, type: 2}
   - {fileID: 11400000, guid: ed9d9114705f5d14d8761e35f6984536, type: 2}
-  - {fileID: 11400000, guid: 0c18aa1c1443cca4f85349246be714fa, type: 2}

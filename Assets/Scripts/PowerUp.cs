@@ -11,7 +11,7 @@ public class PowerUp : MonoBehaviour
     PowerupModel.PowerupType powerupType;
     void Start()
     {
-        int powerupIndex = UnityEngine.Random.Range(0, 3);
+        int powerupIndex = UnityEngine.Random.Range(0, 2);
         Array values = Enum.GetValues(typeof(PowerupModel.PowerupType));
         powerupSpriteRenderer = GetComponent<SpriteRenderer>();
         powerupSpriteRenderer.color = powerupModel.PowerupColors[powerupIndex];
@@ -34,9 +34,6 @@ public class PowerUp : MonoBehaviour
                     break;
                 case PowerupModel.PowerupType.EnlargePaddle:
                     powerupEvents[1].EventTriggered();
-                    break;
-                case PowerupModel.PowerupType.StrongBall:
-                    powerupEvents[2].EventTriggered();
                     break;
             }
             Destroy(gameObject);

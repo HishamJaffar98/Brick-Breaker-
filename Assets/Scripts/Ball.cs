@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
     [SerializeField] private float speedFactor;
     [SerializeField] private float maxBounceAngle;
+    [SerializeField] GameEvent[] ballEvents;
     private Rigidbody2D ballRigidBody;
     private bool isBallLaunched;
 
@@ -34,6 +35,7 @@ public class Ball : MonoBehaviour
             direction.x = Random.Range(-1f, 1f);
             ballRigidBody.AddForce(direction.normalized * speedFactor);
             isBallLaunched = true;
+            ballEvents[0].EventTriggered();
         }
     }
 
@@ -60,6 +62,11 @@ public class Ball : MonoBehaviour
 
             Quaternion rotation = Quaternion.AngleAxis(newAngleOfBounce, Vector3.forward);
             ballRigidBody.velocity = rotation * Vector2.up * ballRigidBody.velocity.magnitude;
-		}
+            ballEvents[0].EventTriggered();
+        }
+        else if(collision.gameObject.GetComponent<Brick>() != null)
+        {
+            ballEvents[1].EventTriggered();
+        }
 	}
 }

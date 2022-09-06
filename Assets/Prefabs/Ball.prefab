@@ -139,6 +139,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedFactor: 500
   maxBounceAngle: 75
+  ballEvents:
+  - {fileID: 11400000, guid: f1254a32491ecc94ca65c77de53a3ce1, type: 2}
+  - {fileID: 11400000, guid: e72c993a8e2f8824a964a51dead4e8b6, type: 2}
 --- !u!114 &5701751141813269279
 MonoBehaviour:
   m_ObjectHideFlags: 0

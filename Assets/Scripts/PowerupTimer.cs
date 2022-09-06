@@ -47,11 +47,6 @@ public class PowerupTimer : MonoBehaviour
         TimerStart(1);
     }
 
-    public void StrongBallTimerStart()
-    {
-        TimerStart(2);
-    }
-
     private void TimerStart(int index)
 	{
         if (!timerRunning)
