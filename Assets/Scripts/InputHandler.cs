@@ -8,7 +8,7 @@ public class InputHandler : MonoBehaviour
 {
 
     public static InputHandler instance;
-    [SerializeField] GameEvent A_KEY_PRESSED;
+    [SerializeField] GameEvent[] inputEvents;
     //public static event int Func<,> newFun;
 	private void Awake()
 	{
@@ -34,9 +34,31 @@ public class InputHandler : MonoBehaviour
 
     private void HandleKeyboardInput()
 	{
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKey(KeyCode.A))
 		{
-            A_KEY_PRESSED.EventTriggered();
+            inputEvents[0].EventTriggered();
         }
-	}
+        else if(Input.GetKey(KeyCode.D))
+		{
+            inputEvents[1].EventTriggered();
+        }
+
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            inputEvents[2].EventTriggered();
+        }
+        else if (Input.GetKeyUp(KeyCode.D))
+        {
+            inputEvents[3].EventTriggered();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+		{
+            inputEvents[4].EventTriggered();
+        }
+
+
+
+
+    }
 }

@@ -20,7 +20,7 @@ public class GameEvent : ScriptableObject
 	{
 		for(int i=0;i<listeners.Count;i++)
 		{
-			listeners[i].OnEventTriggered();
+			listeners[i].OnEventTriggered(this);
 		}
 	}
 

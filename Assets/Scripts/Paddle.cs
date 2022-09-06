@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Paddle : MonoBehaviour
 {
-    [SerializeField] private int speedFactor;
-    private Vector2 position;
+    [SerializeField] private float speedFactor;
     private Rigidbody2D paddleRigidbody;
-
     void Start()
     {
-
+        paddleRigidbody = GetComponent<Rigidbody2D>();
     }
 
     /// <summary>
@@ -22,16 +20,21 @@ public class Paddle : MonoBehaviour
         switch(directionFlag)
 		{
             case 1:
-                paddleRigidbody.AddForce(Vector2.right * speedFactor * Time.deltaTime);
+                paddleRigidbody.velocity = Vector2.right * speedFactor;
                 break;
             case -1:
-                paddleRigidbody.AddForce(Vector2.right * speedFactor * Time.deltaTime);
+                paddleRigidbody.velocity = Vector2.left * speedFactor;
                 break;
-            default:
+            case 0:
+                paddleRigidbody.velocity = Vector2.zero;
                 break;
         }
     }
-
+    
+    public void PrintToConsole(string text)
+	{
+        Debug.Log(text);
+	}
 	// Update is called once per frame
 	void Update()
     {

@@ -1,25 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class GameEventListener : MonoBehaviour
 {
-    public GameEvent gameEvent;
-    public UnityEvent eventToExecute;
-
+    [SerializeField] List<GameEvent> gameEvents = new List<GameEvent>();
+	[SerializeField] List<UnityEvent> unityMethods = new List<UnityEvent>();
+	private Dictionary<GameEvent , UnityEvent> eventMap = new Dictionary<GameEvent,UnityEvent>();
 	private void OnEnable()
 	{
-        gameEvent.AddListener(this);
+		for(int i=0;i<gameEvents.Count;i++)
+		{
+			gameEvents[i].AddListener(this);
+		}
+		
+		for(int i=0;i<gameEvents.Count;i++)
+		{
+			eventMap.Add(gameEvents[i],unityMethods[i]);
+		}
 	}
 
 	private void OnDisable()
 	{
-        gameEvent.RemoveListener(this);
+		for (int i = 0; i < gameEvents.Count; i++)
+		{
+			gameEvents[i].RemoveListener(this);
+		}
 	}
 
-    public void OnEventTriggered()
+    public void OnEventTriggered(GameEvent eventListenedTo)
 	{
-		eventToExecute.Invoke();
+		eventMap[eventListenedTo].Invoke();
 	}
 }
+
