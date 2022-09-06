@@ -33,7 +33,7 @@ public class Paddle : MonoBehaviour
     
     public void PrintToConsole(string text)
 	{
-        Debug.Log(text);
+        //Debug.Log(text);
 	}
 	// Update is called once per frame
 	void Update()
