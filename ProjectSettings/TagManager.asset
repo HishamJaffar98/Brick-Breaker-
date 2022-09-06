@@ -44,3 +44,6 @@ TagManager:
   - name: Sprites
     uniqueID: 2813640657
     locked: 0
+  - name: Game Over
+    uniqueID: 3557034819
+    locked: 0

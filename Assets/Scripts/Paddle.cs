@@ -6,6 +6,7 @@ public class Paddle : MonoBehaviour
 {
     [SerializeField] private float speedFactor;
     private Rigidbody2D paddleRigidbody;
+    private bool reverseControls = false;
     void Start()
     {
         paddleRigidbody = GetComponent<Rigidbody2D>();
@@ -17,27 +18,53 @@ public class Paddle : MonoBehaviour
     /// <param name="directionFlag"> 1 = Right, -1 = Left </param>
 	public void Move(float directionFlag)
 	{
-        switch(directionFlag)
+        if(!reverseControls)
 		{
-            case 1:
-                paddleRigidbody.velocity = Vector2.right * speedFactor;
-                break;
-            case -1:
-                paddleRigidbody.velocity = Vector2.left * speedFactor;
-                break;
-            case 0:
-                paddleRigidbody.velocity = Vector2.zero;
-                break;
+            switch (directionFlag)
+            {
+                case 1:
+                    paddleRigidbody.velocity = Vector2.right * speedFactor;
+                    break;
+                case -1:
+                    paddleRigidbody.velocity = Vector2.left * speedFactor;
+                    break;
+                case 0:
+                    paddleRigidbody.velocity = Vector2.zero;
+                    break;
+            }
         }
+        else
+		{
+            switch (directionFlag)
+            {
+                case 1:
+                    paddleRigidbody.velocity = Vector2.left * speedFactor;
+                    break;
+                case -1:
+                    paddleRigidbody.velocity = Vector2.right * speedFactor;
+                    break;
+                case 0:
+                    paddleRigidbody.velocity = Vector2.zero;
+                    break;
+            }
+        } 
     }
     
-    public void PrintToConsole(string text)
+    public void SetReverseFlag(bool flag)
 	{
-        //Debug.Log(text);
-	}
-	// Update is called once per frame
+        print("RC_Called");
+        reverseControls = flag;
+    }
+
+	
 	void Update()
     {
         
     }
+
+    public void SetPaddleSize(int xScaleFactor)
+	{
+        print("Epcalled");
+        gameObject.transform.localScale = new Vector3(xScaleFactor,gameObject.transform.localScale.y,gameObject.transform.localScale.z);
+	}
 }

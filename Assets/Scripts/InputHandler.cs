@@ -56,9 +56,10 @@ public class InputHandler : MonoBehaviour
 		{
             inputEvents[4].EventTriggered();
         }
-
-
-
-
     }
+
+    public void DeactivateInputHandler()
+	{
+        this.enabled = false;
+	}
 }

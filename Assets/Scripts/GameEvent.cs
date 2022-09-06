@@ -24,5 +24,13 @@ public class GameEvent : ScriptableObject
 		}
 	}
 
+	public void EventTriggered(int value)
+	{
+		for (int i = 0; i < listeners.Count; i++)
+		{
+			listeners[i].OnEventTriggered(this,value);
+		}
+	}
+
 
 }
